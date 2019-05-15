@@ -1,0 +1,96 @@
+
+:root {
+  /* All CSS variables mapped out here */
+  --base-margins: 30;
+  --container-width: 1024;
+  --font-base-size: 16;
+  --font-base-color: #000;
+  --font-line-height-whatever: 1.6em;
+  --font-base-stack: Verdana, Impact, sans-serif;
+  --font-second-stack: Times, "Courier New", serif;
+  --page-background-color: #000;
+  --content-border-radius: 5;
+  --content-padding: 10;
+  --content-background-color: #fff;
+  --content-border-color: #ff6600;
+}
+
+* {box-sizing: border-box;}
+
+h2 {
+color: var(--content-border-color);
+}
+
+body {
+  background-color: var(--page-background-color);
+  color: var(--font-base-color);
+  font-family: var(--font-second-stack);
+  font-size: calc(var(--font-base-size) * 1px);
+  line-height: var(--font-line-height-whatever);
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-gap: calc(var(--base-margins) * 1px);
+  max-width: calc(var(--container-width) * 1px);
+  margin: 25px auto;
+}
+.container > * {
+  border: 2px solid var(--content-border-color);
+  background-color: var(--content-background-color);
+  border-radius: calc(var(--content-border-radius) * 1px);
+  padding: calc(var(--content-padding) * 1px);
+  grid-column: col-start / span 12;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+#flex-container {
+  list-style-type: none;
+	margin: 0;
+  padding: calc(var(--content-padding) * 0px);
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+div#flex-container img {
+    width: 150px;
+    height: 75px;
+    color: #fff;
+    padding: calc(var(--content-padding) * .5px);
+}
+
+img {
+  float: right;
+}
+
+@media (min-width: 1024px) {
+
+  :root {
+    --font-base-color: #fff;
+    --page-background-color: #ff6600;
+    --content-background-color: #000;
+    --content-border-color: #eee;
+    --font-line-height-whatever: 1.6em;
+  }
+  .main-nav {
+    grid-column: col-start / span 2;
+  }
+  .content {
+    grid-column: col-start 3 / span 10;
+  }
+  .main-footer {
+    grid-column: col-start / span 12;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+}
